@@ -75,9 +75,7 @@ Pattern:   ○      ○      ●     ●       ●     ●    ○    ●      �
 
 ### Visual Example
 
-The diagram shows how SLIP39 words are encoded on the KeyTag hardware device. Each numbered row corresponds to a word in your mnemonic phrase, with dots representing the 12-bit binary encoding. The `*` row can be used for optional passphrases, using the same encoding method.
-
-![SLIP39 KeyTag Demo](keytag-demo.svg)
+The [diagram](https://raw.githubusercontent.com/axivo/slip39-dotmap/refs/heads/main/keytag-demo.svg) shows how SLIP39 words are encoded on the KeyTag hardware device. Each numbered row corresponds to a word in your mnemonic phrase, with dots representing the 12-bit binary encoding. The `*` row can be used for optional passphrases, using the same encoding method.
 
 ## Offline Word Recovery
 
