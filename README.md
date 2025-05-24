@@ -59,18 +59,22 @@ The same KeyTag hardware works for both standards. For SLIP39 words, the leftmos
 
 For instance (showing physical KeyTag positions):
 
-#63 `avoid` = 32 + 16 + 8 + 4 + 2 + 1
+#63 `avoid` → 32 + 16 + 8 + 4 + 2 + 1 = 63
+
 ```
 Physical: [2048] [1024] [512] [256] | [128] [64] [32] [16] | [8] [4] [2] [1]
 Pattern:   ○      ○      ○     ○       ○     ○    ●    ●      ●   ●   ●   ●
 ```
+
 | ○○○○ | ○○●● | ●●●● |
 
-#977 `veteran` = 512 + 256 + 128 + 64 + 16 + 1
+#977 `veteran` → 512 + 256 + 128 + 64 + 16 + 1 = 977
+
 ```
 Physical: [2048] [1024] [512] [256] | [128] [64] [32] [16] | [8] [4] [2] [1]
 Pattern:   ○      ○      ●     ●       ●     ●    ○    ●      ○   ○   ○   ●
 ```
+
 | ○○●● | ●●○● | ○○○● |
 
 ### Visual Example
