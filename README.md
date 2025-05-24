@@ -36,7 +36,7 @@ The following verification method was used:
 
 Use 12 dots per word to record your mnemonic phrase.
 
-### Physical KeyTag Layout
+#### Physical KeyTag Layout
 
 The KeyTag hardware provides 12 bit positions arranged as follows:
 
