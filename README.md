@@ -22,15 +22,34 @@ Each SLIP39 word is converted to a unique 12-dot pattern using binary encoding:
 3. **Dot Encoding**: ● = bit value 1, ○ = bit value 0
 4. **KeyTag Layout**: Split into three 4-dot columns for easy punching
 
+### Validation Method
+
+The following formula was used:
+
+```javascript
+function calculateDotmap(index) {
+  // Convert index to 12-bit binary
+  const binary = index.toString(2).padStart(12, '0');
+
+  // Split into 3 columns of 4 bits each
+  const bits11to8 = binary.substring(0, 4);
+  const bits7to4 = binary.substring(4, 8);
+  const bits3to0 = binary.substring(8, 12);
+
+  // Convert binary to dotmap (● = 1, ○ = 0)
+  function binaryToDotmap(binaryStr) {
+    return binaryStr.split('').map(bit => bit === '1' ? '●' : '○').join('');
+  }
+
+  return [
+    binaryToDotmap(bits11to8),  // Column1
+    binaryToDotmap(bits7to4),   // Column2  
+    binaryToDotmap(bits3to0)    // Column3
+  ];
+}
+```
+
 This ensures mathematical consistency and unique representation for each word, while maintaining compatibility with existing KeyTag hardware.
-
-### Verification Method
-
-The following verification method was used:
-
-- Columns: [bits 11-8][bits 7-4][bits 3-0]
-- Dotmap: ● = bit 1, ○ = bit 0  
-- Formula: SLIP39 index → 12-bit binary → dotmap pattern
 
 ### Usage
 
@@ -55,7 +74,7 @@ The KeyTag hardware provides 12 bit positions arranged as follows:
 
 #### Hardware Compatibility
 
-The same KeyTag hardware works for both standards. For SLIP39 words, the leftmost dot (2048 position) will always remain un-punched across all words. This is correct and expected behavior, not an error.
+The same KeyTag hardware works for both standards. For SLIP39 words, the leftmost dot (position 2048) will **always remain un-punched** across all words. This is correct and expected behavior, not an error.
 
 For instance (showing physical KeyTag positions):
 
@@ -79,11 +98,11 @@ Pattern:   ○      ○      ●     ●       ●     ●    ○    ●      �
 
 ### Visual Example
 
-The [diagram](https://raw.githubusercontent.com/axivo/slip39-dotmap/refs/heads/main/keytag-demo.svg) shows how SLIP39 words are encoded on the KeyTag hardware device. Each numbered row corresponds to a word in your mnemonic phrase, with dots representing the 12-bit binary encoding. The `*` row can be used for optional passphrases, using the same encoding method.
+The [diagram](https://raw.githubusercontent.com/axivo/slip39-dotmap/refs/heads/main/diagram.svg) shows how SLIP39 words are encoded on the KeyTag hardware device. Each numbered row corresponds to a word in your mnemonic phrase, with dots representing the 12-bit binary encoding. The `*` row can be used for optional passphrases, using the same encoding method.
 
 ## Offline Word Recovery
 
-For maximum security, retrieve SLIP39 words from your KeyTag using only offline methods. Never enter actual seed patterns into electronic devices (e.g., computer, mobile phone, tablet), use air-gapped calculators or manual methods only.
+For maximum security, retrieve SLIP39 words from your KeyTag **using only offline methods**. Never enter actual seed patterns into electronic devices (e.g., computer, mobile phone, tablet), use air-gapped calculators or manual methods only.
 
 ### Method 1: Scientific Calculator (Recommended)
 
