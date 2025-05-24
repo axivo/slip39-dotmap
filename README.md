@@ -44,7 +44,7 @@ The KeyTag hardware provides 12 bit positions arranged as follows:
 [2048] [1024] [512] [256] | [128] [64] [32] [16] | [8] [4] [2] [1]
 ```
 
-#### SLIP39 vs BIP39 Bit Usage
+#### BIP39 vs SLIP39 Bit Usage
 
 - **BIP39**: Uses all 12 bits (2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1)
   - Word range: 2048 words (indices 1-2048)
