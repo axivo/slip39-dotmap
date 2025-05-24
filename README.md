@@ -79,6 +79,50 @@ The diagram shows how SLIP39 words are encoded on the KeyTag hardware device. Ea
 
 ![SLIP39 KeyTag Demo](keytag-demo.svg)
 
+## Offline Word Recovery
+
+For maximum security, retrieve SLIP39 words from your KeyTag using only offline methods. Never enter actual seed patterns into electronic devices (e.g., computer, mobile phone, tablet), use air-gapped calculators or manual methods only.
+
+### Method 1: Scientific Calculator (Recommended)
+
+Equipment needed:
+
+- Scientific calculator with binary/decimal conversion (e.g., Casio fx-991ES PLUS C)
+- Printed SLIP39 wordlist
+
+#### Steps
+
+1. **Enter Binary Mode**: `MODE` → `3` → `1` (BIN)
+2. **Read KeyTag pattern**: Convert ○ = 0, ● = 1
+3. **Enter 12-bit pattern**: e.g., `000000111111`
+4. **Convert to decimal**: `MODE` → `3` → `4` (DEC)
+5. **Subtract offset**: Result - 1
+6. **Look up word**: Use result as SLIP39 word index
+
+#### Examples
+
+- Pattern `○○○○○○●●●●●●` → `000000111111` → 63 - 1 = 62 → `avoid`
+- Pattern `○○●●●●○●○○○●` → `001111010001` → 977 - 1 = 976 → `veteran`
+
+### Method 2: Manual Calculation
+
+Equipment needed:
+
+- Basic calculator
+- Printed SLIP39 wordlist
+
+#### Steps
+
+1. **Identify bit positions**: [2048][1024][512][256][128][64][32][16][8][4][2][1]
+2. **Add punched positions**: Sum all ● positions
+3. **Subtract offset**: Result - 1
+4. **Look up word**: Use result as SLIP39 word index
+
+#### Examples
+
+- Pattern `○○○○○○●●●●●●` → positions 32+16+8+4+2+1 = 63 → 63-1 = 62 → `avoid`
+- Pattern `○○●●●●○●○○○●` → positions 512+256+128+64+16+1 = 977 → 977-1 = 976 → `veteran`
+
 ## Conversion Table
 
 This table shows SLIP39 indices (0-1023) with their corresponding dotmap patterns. Each word's SLIP39 index is encoded as (index + 1) in 12-bit binary to avoid all-empty patterns.
