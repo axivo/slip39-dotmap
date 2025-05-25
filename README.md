@@ -4,7 +4,7 @@ Turn SLIP39 words into dotmap, for use with [OneKey KeyTag](https://onekey.so/pr
 
 ## Overview
 
-SLIP39 (Shamir's Secret Sharing for Mnemonic Codes) offers enhanced security over BIP39 through threshold secret sharing, allowing you to split your seed into multiple shares where only a subset is needed for recovery. This dotmap implementation enables you to store SLIP39 phrases on durable metal KeyTag devices.
+SLIP39 (Shamir's Secret Sharing for Mnemonic Codes) offers enhanced security over BIP39 through threshold secret sharing, allowing you to split your seed into multiple shares where only a subset is needed for recovery. This dotmap implementation enables you to store SLIP39 phrases on durable metal KeyTag devices and follows the established OneKey [security principles](https://help.onekey.so/hc/en-us/articles/9062357638031).
 
 **Key differences from BIP39:**
 
@@ -96,10 +96,6 @@ Pattern:   ○      ○      ●     ●       ●     ●    ○    ●      �
 
 | ○○●● | ●●○● | ○○○● |
 
-### Visual Example
-
-The [diagram](https://raw.githubusercontent.com/axivo/slip39-dotmap/refs/heads/main/diagram.svg) shows how SLIP39 words are encoded on the KeyTag hardware device. Each numbered row corresponds to a word in your mnemonic phrase, with dots representing the 12-bit binary encoding. The `*` row can be used for optional passphrases, using the same encoding method.
-
 ## Offline Word Recovery
 
 For maximum security, retrieve SLIP39 words from your KeyTag **using only offline methods**. Never enter actual seed patterns into electronic devices (e.g., computer, mobile phone, tablet), use air-gapped calculators or manual methods only.
@@ -113,11 +109,13 @@ Equipment needed:
 
 #### Steps
 
-1. **Enter Binary Mode**: `MODE` → `3` → `1` (BIN)
-2. **Read KeyTag pattern**: Convert ○ = 0, ● = 1
-3. **Enter 12-bit pattern**: e.g., `000000111111`
-4. **Convert to decimal**: `MODE` → `3` → `4` (DEC)
-5. **Look up word**: Use result as SLIP39 word index
+1. **Enter BASE-N Mode**: Press `MODE` → select `BASE-N`
+2. **Switch to Binary Mode**: Press `SHIFT` → press `log` (Bin)
+3. **Read KeyTag pattern**: Convert ○ = 0, ● = 1
+4. **Enter 12-bit pattern**: e.g., `000000111111`
+5. **Press equals**: Press `=` to execute the input
+6. **Convert to decimal**: Press `SHIFT` → press `x²` (Dec)
+7. **Look up word**: Use result as SLIP39 word index
 
 #### Examples
 
