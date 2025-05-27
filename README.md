@@ -78,23 +78,19 @@ The same KeyTag hardware works for both standards. For SLIP39 words, the leftmos
 
 For instance (showing physical KeyTag positions):
 
-#63 `avoid` → 32 + 16 + 8 + 4 + 2 + 1 = 63
+#15 `advocate` → 8 + 4 + 2 + 1 = 15
 
 ```
 Physical: [2048] [1024] [512] [256] | [128] [64] [32] [16] | [8] [4] [2] [1]
-Pattern:   ○      ○      ○     ○       ○     ○    ●    ●      ●   ●   ●   ●
+Pattern:   ○      ○      ○     ○       ○     ○    ○    ○      ●   ●   ●   ●
 ```
 
-| ○○○○ | ○○●● | ●●●● |
-
-#977 `veteran` → 512 + 256 + 128 + 64 + 16 + 1 = 977
+#754 `result` → 512 + 128 + 64 + 32 + 16 + 2 = 754
 
 ```
 Physical: [2048] [1024] [512] [256] | [128] [64] [32] [16] | [8] [4] [2] [1]
-Pattern:   ○      ○      ●     ●       ●     ●    ○    ●      ○   ○   ○   ●
+Pattern:   ○      ○      ●     ○       ●     ●    ●    ●      ○   ○   ●   ○
 ```
-
-| ○○●● | ●●○● | ○○○● |
 
 ## Offline Word Recovery
 
@@ -112,14 +108,14 @@ Equipment needed:
 1. **Enter BASE-N Mode**: Press `MODE` → Select `BASE-N`
 2. **Switch to Binary Mode**: Press `SHIFT` → Press `log` (Bin)
 3. **Read KeyTag pattern**: Convert ○ = 0, ● = 1
-4. **Enter 12-bit pattern**: e.g., `000000111111` → Press `=` to execute the input
+4. **Enter 12-bit pattern**: e.g., `000000001111` → Press `=` to execute the input
 5. **Convert to decimal**: Press `SHIFT` → Press `x²` (Dec)
 6. **Look up word**: Use result as SLIP39 word index
 
 #### Examples
 
-- Pattern `○○○○○○●●●●●●` → `000000111111` → 63 → `avoid`
-- Pattern `○○●●●●○●○○○●` → `001111010001` → 977 → `veteran`
+- Pattern `○○○○○○○○●●●●` → `000000001111` → 15 → `advocate`
+- Pattern `○○●○●●●●○○●○` → `001011110010` → 754 → `result`
 
 ### Method 2: Manual Calculation
 
@@ -136,8 +132,8 @@ Equipment needed:
 
 #### Examples
 
-- Pattern `○○○○○○●●●●●●` → positions 32+16+8+4+2+1 = 63 → `avoid`
-- Pattern `○○●●●●○●○○○●` → positions 512+256+128+64+16+1 = 977 → `veteran`
+- Pattern `○○○○○○○○●●●●` → positions 8+4+2+1 = 15 → `advocate`
+- Pattern `○○●○●●●●○○●○` → positions 512+128+64+32+16+2 = 754 → `result`
 
 ## Conversion Table
 
