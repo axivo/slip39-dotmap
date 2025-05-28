@@ -4,14 +4,14 @@ A comprehensive solution for converting SLIP39 mnemonic words into physical dot 
 
 ## Security Notice
 
-**CRITICAL**: SLIP39 mnemonics control cryptocurrency funds. Always use offline methods when working with real mnemonics. This project is designed for air-gapped, offline usage to prevent exposure of sensitive cryptographic material.
+SLIP39 mnemonics control cryptocurrency funds. Always use offline methods when working with real mnemonics. This project is designed for air-gapped, offline usage to prevent exposure of sensitive cryptographic material.
 
-## Choose Your Tool
+## Tools
 
-- **[Interactive Converter](converter/README.md)** - Secure web application with real-time conversion and professional print layouts
+- **[Interactive Converter](converter)** - Secure web application with real-time conversion and professional print layouts
 - **[Complete Reference Table](docs/dotmap.md)** - All 1024 SLIP39 words with their corresponding dot patterns for manual lookup
 
-## What is SLIP39 KeyTag Dotmap?
+## Overview
 
 SLIP39 (Shamir's Secret Sharing for Mnemonic Codes) provides enhanced security over BIP39 through threshold secret sharing, allowing you to split your seed into multiple shares where only a subset is needed for recovery. This dotmap implementation enables you to store SLIP39 phrases on durable metal KeyTag devices, providing:
 
@@ -20,7 +20,7 @@ SLIP39 (Shamir's Secret Sharing for Mnemonic Codes) provides enhanced security o
 - **Offline storage** - No digital attack surface
 - **Hardware compatibility** - Works with existing OneKey KeyTag devices
 
-## Key Differences from BIP39
+### Key Differences from BIP39
 
 | Aspect | BIP39 | SLIP39 |
 |--------|-------|--------|
@@ -31,23 +31,23 @@ SLIP39 (Shamir's Secret Sharing for Mnemonic Codes) provides enhanced security o
 
 ## Usage
 
-### Creating Dotmaps
+### Dotmaps Generator
 
-**Recommended: Use the Interactive Converter**
+#### Method 1: Interactive Converter (Recommended)
 
-1. Load the [interactive tool](converter/README.md) online to cache resources
+1. Load the [interactive tool](converter) online to cache resources
 2. Disconnect from internet completely  
 3. Enter your SLIP39 words and convert to dot patterns
 4. Print professional layouts for physical marking
 5. Clear all browser data when finished
 
-**Alternative: Manual Reference**
+#### Method 2: Manual Reference
 
 1. Look up each word in the [conversion table](docs/dotmap.md)
 2. Mark corresponding dots on your KeyTag hardware
 3. Verify patterns match the reference exactly
 
-### Reading Dotmaps (Recovery)
+### Dotmaps Recovery
 
 #### Method 1: Scientific Calculator (Recommended)
 
@@ -115,7 +115,7 @@ Pattern:   ○      ○      ●     ○       ●     ●    ●    ●      �
 
 ## Security Best Practices
 
-- **Never use online** when working with real mnemonics
+- **Always use air-gapped devices**, when working with real mnemonics
 - **Test thoroughly** with sample data before real use
 - **Create multiple copies** stored in separate secure locations
 - **Verify accuracy** - incorrect dots mean lost funds
