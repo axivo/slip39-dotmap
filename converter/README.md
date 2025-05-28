@@ -62,24 +62,23 @@ npm --version
 
 ### Data Protection
 
-- **Never enter real mnemonics while online**
-- **Clear browser data** after use (history, cache, local storage)
-- **Use a dedicated offline computer** for maximum security
-- **Test with sample data** first to verify functionality
+- **Never enter real mnemonics while online**, use passphrase protected cold wallets
+- **Use a dedicated offline computer**, for maximum security
+- **Test with sample data first**, to verify functionality
 
 ### Physical Security
 
-- **Store printed KeyTags securely** - treat them like cash or gold
-- **Use multiple copies** stored in different secure locations
+- **Store KeyTags securely**, treat them like cash
+- **Use multiple copies**, stored in different secure locations
 - **Test recovery process** with small amounts first
-- **Protect from physical damage** (fire, water, corrosion)
+- **Protect KeyTags from physical damage** (fire, water, corrosion)
 
 ## Important Warnings
 
-- **SLIP39 mnemonics control cryptocurrency funds** - exposure can result in permanent financial loss
-- **Mark dots accurately** - incorrect patterns mean lost funds
+- **SLIP39 mnemonics control cryptocurrency funds**, exposure can result in permanent financial loss
+- **Mark dots accurately**, incorrect patterns means lost funds
 - **Test recovery process** with small amounts before trusting large funds
-- **Never share real mnemonic data** when seeking help
+- **Never share real mnemonic data**, when seeking help
 
 ## Disclaimer
 
