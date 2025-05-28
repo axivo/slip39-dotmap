@@ -8,7 +8,7 @@ SLIP39 mnemonics control cryptocurrency funds. Always use offline methods when w
 
 ## Tools
 
-- **[Interactive Converter](converter/README.md)** - Secure web application with real-time conversion and professional print layouts
+- **[Interactive Converter](converter)** - Secure web application with real-time conversion and professional print layouts
 - **[Complete Reference Table](docs/dotmap.md)** - All 1024 SLIP39 words with their corresponding dot patterns for manual lookup
 
 ## Overview
@@ -35,7 +35,7 @@ SLIP39 (Shamir's Secret Sharing for Mnemonic Codes) provides enhanced security o
 
 #### Method 1: Interactive Converter (Recommended)
 
-1. Load the [interactive tool](converter/README.md) online to cache resources
+1. Load the [interactive tool](converter) online to cache resources
 2. Disconnect from internet completely  
 3. Enter your SLIP39 words and convert to dot patterns
 4. Print professional layouts for physical marking
