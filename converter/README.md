@@ -54,6 +54,17 @@ npm --version
 
 ## Security Best Practices
 
+### Third-Party Library Verification
+
+This application uses Handlebars `v4.7.8`, for template rendering. For security verification, run:
+
+```bash
+diff <(curl -s "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js") \
+  public/assets/handlebars.min.js
+```
+
+If there is no output, files are identical.
+
 ### Security Steps
 
 1. **Load the application online first**, to cache resources
