@@ -1,0 +1,149 @@
+<div class="error-container {{severity}}-error">
+  <div class="error-header">
+    <div class="error-title">
+      <h3>{{title}}</h3>
+    </div>
+  </div>
+
+  <div class="error-body">
+    <div class="error-message">
+      <p>{{message}}</p>
+    </div>
+
+    {{#if canRetry}}
+    <div class="error-actions">
+      <button class="retry-button" onclick="window.location.reload()">
+        Try Again
+      </button>
+      {{#if showReset}}
+      <button class="reset-button" onclick="if(window.application) window.application.resetForm()">
+        Reset Form
+      </button>
+      {{/if}}
+    </div>
+    {{/if}}
+  </div>
+
+  {{#if timestamp}}
+  <div class="error-footer">
+    <span class="error-time">{{formatDate timestamp}}</span>
+    {{#if category}}
+    <span class="error-category">Category: {{category}}</span>
+    {{/if}}
+  </div>
+  {{/if}}
+</div>
+
+<style>
+  #error-container {
+    margin-bottom: 30px;
+  }
+
+  .error-container {
+    border-radius: 12px;
+    margin: 0;
+    padding: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .critical-error {
+    background-color: #fef2f2;
+    border: 2px solid #dc2626;
+    color: #7f1d1d;
+  }
+
+  .high-error {
+    background-color: #fefbf2;
+    border: 2px solid #d97706;
+    color: #92400e;
+  }
+
+  .medium-error {
+    background-color: #fffbeb;
+    border: 2px solid #f59e0b;
+    color: #78350f;
+  }
+
+  .low-error {
+    background-color: #f0f9ff;
+    border: 2px solid #0ea5e9;
+    color: #0c4a6e;
+  }
+
+  .error-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .error-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+
+  .error-title h3 {
+    margin: 0 0 4px 0;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .error-body {
+    margin-left: 0;
+  }
+
+  .error-message p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .error-actions {
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+  }
+
+  .retry-button,
+  .reset-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .retry-button {
+    background-color: #059669;
+    color: white;
+  }
+
+  .retry-button:hover {
+    background-color: #047857;
+  }
+
+  .reset-button {
+    background-color: #6b7280;
+    color: white;
+  }
+
+  .reset-button:hover {
+    background-color: #4b5563;
+  }
+
+  .error-footer {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  .error-time,
+  .error-category {
+    font-family: monospace;
+  }
+</style>
