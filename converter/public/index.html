@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLIP39 KeyTag Converter</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>SLIP39 KeyTag Converter</h1>
+        <div id="network-warning" class="warning hidden">
+          Warning: Network connection detected, it is not safe to convert mnemonics.
+        </div>
+      </header>
+
+      <main>
+        <div class="controls">
+          <div class="word-count-selector">
+            <select id="wordCount">
+              <option value="20">20 words</option>
+              <option value="23">23 words</option>
+              <option value="26">26 words</option>
+              <option value="29">29 words</option>
+              <option value="33">33 words</option>
+            </select>
+          </div>
+
+          <div class="input-section">
+            <textarea id="mnemonicInput"
+              placeholder="Enter SLIP39 words separated by new lines or spaces..."></textarea>
+            <div class="button-group">
+              <div class="button-left">
+                <button id="convertBtn">Convert to Dots</button>
+                <button id="clearBtn">Reset</button>
+              </div>
+              <div class="button-right">
+                <button id="exportPrint">Print Layout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dotmap-grid" id="dotmapGrid">
+          <!-- 33 rows of dots will be generated here -->
+        </div>
+      </main>
+    </div>
+
+    <!-- Load Handlebars -->
+    <script src="./assets/handlebars.min.js"></script>
+
+    <!-- Load library classes first -->
+    <script src="/lib/Template.js"></script>
+    <script src="/lib/DotPattern.js"></script>
+    <script src="/lib/Validator.js"></script>
+    <script src="/lib/Converter.js"></script>
+
+    <!-- Load main application -->
+    <script src="application.js"></script>
+  </body>
+
+</html>

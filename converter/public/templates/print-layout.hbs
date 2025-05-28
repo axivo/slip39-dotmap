@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>SLIP39 KeyTag Pattern</title>
+    {{{printStyles}}}
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>SLIP39 KeyTag Pattern</h1>
+      <p>Generated: {{formatDate metadata.timestamp}}</p>
+    </div>
+
+    <div class="grid">
+      {{#each patterns}}
+      <div class="row">
+        <span class="row-num">{{this.position}}</span>
+        <span class="dots">{{#each this.dotDisplay}}{{#if this.filled}}●{{else}}○{{/if}}{{/each}}</span>
+        <span class="word">{{this.word}}</span>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="instructions">
+      <p><strong>Instructions</strong></p>
+      <ul>
+        <li>● = Punch hole in KeyTag</li>
+        <li>○ = Leave intact</li>
+        <li>Each row represents one word</li>
+        <li>Verify pattern, prior punching</li>
+      </ul>
+    </div>
+  </body>
+
+</html>
