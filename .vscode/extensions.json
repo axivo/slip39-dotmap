@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-html-language-features",
+    "ms-vscode.vscode-css-language-features",
+    "ms-vscode.vscode-typescript-language-features"
+  ]
+}
