@@ -60,4 +60,4 @@ brew install node
 
 ## Disclaimer
 
-This tool is provided as-is for educational and personal use. Users are responsible for proper security practices, accurate implementation, and safe storage of physical KeyTags. The authors assume no responsibility for lost funds due to misuse or implementation errors.
+This tool is provided as-is for educational and personal use. Users are responsible for proper security practices, accurate implementation, and safe storage of OneKey KeyTag hardware backup devices. The authors assume no responsibility for lost funds due to misuse or implementation errors.
