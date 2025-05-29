@@ -4,14 +4,23 @@ An educational tool that demonstrates how SLIP39 mnemonics convert to dot patter
 
 ![SLIP39 KeyTag Converter](../docs/images/converter.png)
 
-## Security Notice
+> [!WARNING]
+> Under any circumstances, **do not enter actual cryptocurrency seed phrases into converter**, regardless of how secure your computer is. Mnemonics entered into any electronic device create security risks, including:
+>
+> - Memory persistence in RAM and browser caches
+> - Potential exposure through swap files or system dumps  
+> - Vulnerability to malware, screen recording, or keyloggers
+> - Human error in data clearing procedures
 
-Under any circumstances, **do not enter actual cryptocurrency seed phrases into converter**, regardless of how secure your computer is. Mnemonics entered into any electronic device create security risks, including:
+## Features
 
-- Memory persistence in RAM and browser caches
-- Potential exposure through swap files or system dumps  
-- Vulnerability to malware, screen recording, or keyloggers
-- Human error in data clearing procedures
+The converter offers hands-on learning while maintaining strict security practices to protect users from accidentally exposing sensitive information. The following features are implemented:
+
+- Interactive SLIP39 word-to-dot conversion
+- Visual KeyTag layout simulation
+- Real-time pattern validation
+- Network connection warnings for security
+- Educational examples and references
 
 ## Quick Start
 
