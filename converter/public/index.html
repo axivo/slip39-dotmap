@@ -19,27 +19,24 @@
 
       <main>
         <div class="controls">
-          <div class="word-count-selector">
-            <select id="wordCount">
-              <option value="20">20 words</option>
-              <option value="23">23 words</option>
-              <option value="26">26 words</option>
-              <option value="29">29 words</option>
-              <option value="33">33 words</option>
-            </select>
-          </div>
-
           <div class="input-section">
             <textarea id="mnemonicInput"
               placeholder="Enter SLIP39 words separated by new lines or spaces..."></textarea>
-            <div class="button-group">
-              <div class="button-left">
-                <button id="convertBtn">Convert to Dots</button>
-                <button id="clearBtn">Reset</button>
-              </div>
-              <div class="button-right">
-                <button id="exportPrint">Print Layout</button>
-              </div>
+          </div>
+
+          <div class="button-group">
+            <div class="word-count-selector">
+              <select id="wordCount">
+                <option value="20">20 words</option>
+                <option value="23">23 words</option>
+                <option value="26">26 words</option>
+                <option value="29">29 words</option>
+                <option value="33">33 words</option>
+              </select>
+            </div>
+            <div class="action-buttons">
+              <button id="convertBtn">Convert to Dots</button>
+              <button id="clearBtn">Reset</button>
             </div>
           </div>
         </div>
@@ -50,11 +47,7 @@
       </main>
     </div>
 
-    <!-- Load Handlebars -->
-    <script src="./assets/handlebars.min.js"></script>
-
-    <!-- Load library classes first -->
-    <script src="/lib/Template.js"></script>
+    <!-- Load library classes -->
     <script src="/lib/DotPattern.js"></script>
     <script src="/lib/Validator.js"></script>
     <script src="/lib/Converter.js"></script>

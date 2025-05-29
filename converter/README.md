@@ -1,12 +1,17 @@
 # SLIP39 KeyTag Converter
 
-A secure, offline-first tool for converting SLIP39 mnemonic words into dot patterns for physical KeyTag hardware implementation. This tool enables the creation of physical, air-gapped cryptocurrency wallet backups using the OneKey KeyTag system.
+A tool for learning SLIP39 mnemonic conversion to dot patterns for KeyTag hardware. This application demonstrates the conversion process and KeyTag layout for **educational purposes** only.
 
 ![SLIP39 KeyTag Converter](../docs/images/converter.png)
 
 ## Security Notice
 
-This tool is designed for offline use only when handling real cryptocurrency mnemonics. Network connectivity poses security risks for sensitive cryptographic material.
+Under any circumstances, **do not enter actual cryptocurrency seed phrases into converter**, regardless of how secure your computer is. Mnemonics entered into any electronic device create security risks, including:
+
+- Memory persistence in RAM and browser caches
+- Potential exposure through swap files or system dumps  
+- Vulnerability to malware, screen recording, or keyloggers
+- Human error in data clearing procedures
 
 ## Quick Start
 
@@ -46,50 +51,6 @@ npm --version
 
 2. **Open browser:**
    Navigate to `http://localhost:3000`
-
-3. **For secure use:**
-   - Disconnect from internet after loading the page
-   - Verify the network warning appears when online
-   - Only enter real mnemonics when offline
-
-## Security Best Practices
-
-### Third-Party Library Verification
-
-This application uses Handlebars `v4.7.8`, for template rendering. For security verification, run:
-
-```bash
-diff <(curl -s "https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js") \
-  public/assets/handlebars.min.js
-```
-
-If there is no output, files are identical.
-
-### Security Steps
-
-1. **Load the application online first**, to cache resources
-2. **Disconnect from internet**, before entering any real mnemonics
-3. **Only proceed when offline**, the network warning will disappear when disconnected
-
-### Data Protection
-
-- **Never enter real mnemonics while online**, use passphrase protected cold wallets
-- **Use a dedicated offline computer**, for maximum security
-- **Test with sample data first**, to verify functionality
-
-### Physical Security
-
-- **Store KeyTags securely**, treat them like cash
-- **Use multiple copies**, stored in different secure locations
-- **Test recovery process** with small amounts first
-- **Protect KeyTags from physical damage** (fire, water, corrosion)
-
-## Important Warnings
-
-- **SLIP39 mnemonics control cryptocurrency funds**, exposure can result in permanent financial loss
-- **Mark dots accurately**, incorrect patterns means lost funds
-- **Test recovery process** with small amounts before trusting large funds
-- **Never share real mnemonic data**, when seeking help
 
 ## Disclaimer
 
