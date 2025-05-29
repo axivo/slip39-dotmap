@@ -1,6 +1,6 @@
 # SLIP39 KeyTag Converter
 
-A tool for learning SLIP39 mnemonic conversion to dot patterns for KeyTag hardware. This application demonstrates the conversion process and KeyTag layout for **educational purposes** only.
+An educational tool that demonstrates how SLIP39 mnemonics convert to dot patterns, for use with [OneKey KeyTag](https://onekey.so/products/onekey-keytag/) hardware backup devices. This application shows the conversion process and KeyTag layout, for **learning purposes** only.
 
 ![SLIP39 KeyTag Converter](../docs/images/converter.png)
 

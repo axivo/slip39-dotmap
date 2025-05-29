@@ -1,6 +1,6 @@
 # SLIP39 KeyTag Dotmap
 
-A comprehensive solution for converting SLIP39 mnemonic words into physical dot patterns for use with [OneKey KeyTag](https://onekey.so/products/onekey-keytag/) hardware backup devices. This project provides a complete reference documentation for secure, offline wallet backups, as an alternative to the official OneKey [BIP39 dotmap](https://github.com/OneKeyHQ/bip39-dotmap).
+A comprehensive solution that converts SLIP39 mnemonic words into physical dot patterns, for use with [OneKey KeyTag](https://onekey.so/products/onekey-keytag/) hardware backup devices. This project provides a complete reference documentation for secure, offline wallet backups, as an alternative to the official OneKey [BIP39 dotmap](https://github.com/OneKeyHQ/bip39-dotmap).
 
 ## Security Notice
 
