@@ -1,12 +1,3 @@
-/**
- * @module Server
- * @description Express server for SLIP39 KeyTag Converter application.
- * Provides minimal HTTP server with static file serving, automatic browser
- * launch, and development convenience features for local testing.
- * @author AXIVO
- * @license MIT
- */
-
 const express = require('express');
 const path = require('path');
 const open = require('open');

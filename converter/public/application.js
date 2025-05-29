@@ -1,7 +1,7 @@
 /**
  * Main application controller for SLIP39 KeyTag Converter frontend interface.
  * Handles user interactions, manages dot grid visualization, processes mnemonic
- * conversions, provides validation feedback, and generates print layouts.
+ * conversions, and provides validation feedback for educational purposes.
  * Integrates with conversion library classes and manages application state.
  *
  * @class Application
@@ -12,13 +12,12 @@ class Application {
   /**
    * Initialize application with default state and start initialization sequence.
    * Sets up core properties for wordlist management, converter instances,
-   * UI state tracking, network security monitoring, and template service.
+   * UI state tracking, and network security monitoring.
    */
   constructor() {
     this.wordlist = null;
     this.converter = null;
     this.validator = null;
-    this.templateService = null;
     this.currentWordCount = 20;
     this.dotRows = [];
     this.isOnline = false;
@@ -107,8 +106,6 @@ class Application {
     const rowNum = document.createElement('div');
     rowNum.className = 'row-number';
     rowNum.textContent = rowNumber;
-    const separator = document.createElement('div');
-    separator.className = 'separator';
     const dotGroups = document.createElement('div');
     dotGroups.className = 'dot-groups';
     for (let groupIndex = 0; groupIndex < 3; groupIndex++) {
@@ -134,78 +131,11 @@ class Application {
     wordDisplay.className = 'word-display empty';
     wordDisplay.textContent = '#0';
     row.appendChild(rowNum);
-    row.appendChild(separator);
     row.appendChild(dotGroups);
     row.appendChild(wordDisplay);
     return row;
   }
 
-  /**
-   * Generate print layout using template system with professional styling.
-   * Creates template-based print layout for physical KeyTag creation with
-   * comprehensive metadata, pattern display, and implementation instructions.
-   */
-  async exportToPrint() {
-    const patterns = this.getCurrentPatterns();
-    if (patterns.length === 0) {
-      await this.showError('No patterns to print, please convert a mnemonic first.', {
-        severity: 'medium',
-        title: 'No Patterns Available'
-      });
-      return;
-    }
-
-    // Open window first to avoid popup blocking
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) {
-      this.showError('Print blocked by browser. Please allow popups for this site.', {
-        severity: 'high',
-        title: 'Popup Blocked'
-      });
-      return;
-    }
-
-    // Show loading in the popup window
-    printWindow.document.write('<html><head><title>Loading...</title></head><body><h1>Loading print layout...</h1></body></html>');
-
-    try {
-      const printStyles = await this.fetchPrintStyles();
-      const templateData = this.preparePrintTemplateData(patterns, printStyles);
-      const renderResult = await this.templateService.renderTemplate('print-layout.hbs', templateData);
-
-      if (!renderResult.success) {
-        this.showError(`Print template failed: ${renderResult.message}`);
-        printWindow.close();
-        return;
-      }
-
-      // Replace loading content with actual template
-      printWindow.document.open();
-      printWindow.document.write(renderResult.html);
-      printWindow.document.close();
-      printWindow.focus();
-    } catch (error) {
-      console.error('Export to print error:', error);
-      this.showError(`Print export failed: ${error.message}`);
-      printWindow.close();
-    }
-  }
-
-  /**
-   * Fetch print styles from template for print layout integration.
-   * Loads print-specific CSS styles from print-style template.
-   *
-   * @returns {Promise<string>} Print styles CSS content for template embedding
-   */
-  async fetchPrintStyles() {
-    try {
-      const styleResult = await this.templateService.fetchTemplate('print-style.hbs');
-      return styleResult.success ? styleResult.source : '';
-    } catch (error) {
-      console.error('Failed to fetch print styles:', error);
-      return '';
-    }
-  }
   /**
    * Generate complete dot grid interface with 33 rows for maximum mnemonic length.
    * Creates DOM structure for dot pattern visualization and stores row references
@@ -227,7 +157,7 @@ class Application {
   }
 
   /**
-   * Extract current dot patterns from grid for export and validation.
+   * Extract current dot patterns from grid for educational reference.
    * Scans visible rows and builds pattern data structure with position,
    * dot states, and associated word information.
    *
@@ -326,15 +256,14 @@ class Application {
   }
 
   /**
-   * Initialize converter, validator, and template service classes with dependencies.
-   * Creates converter instance for word-to-pattern operations, assigns validator
-   * class for binary validation, and initializes template service for rendering.
+   * Initialize converter and validator classes with dependencies.
+   * Creates converter instance for word-to-pattern operations and assigns validator
+   * class for binary validation.
    */
   initializeClasses() {
     if (this.wordlist) {
       this.converter = new Converter(this.wordlist);
       this.validator = Validator;
-      this.templateService = new Template({ handlebars: window.Handlebars });
     }
   }
 
@@ -353,45 +282,6 @@ class Application {
     }
   }
 
-  /**
-   * Prepare template data for print layout rendering with pattern processing.
-   * Transforms pattern data into template-compatible format with dot display,
-   * binary representation, and metadata for professional print output.
-   *
-   * @param {Object[]} patterns - Pattern objects from getCurrentPatterns
-   * @param {string} printStyles - CSS styles for print optimization
-   * @returns {Object} Template data object for Handlebars rendering
-   * @returns {Object} returns.metadata - Print metadata with timestamp and counts
-   * @returns {Object[]} returns.patterns - Formatted pattern data for template
-   * @returns {string} returns.printStyles - Embedded CSS styles for print
-   */
-  preparePrintTemplateData(patterns, printStyles) {
-    const processedPatterns = patterns.map(pattern => {
-      const dotDisplay = pattern.dots.split('').map((dot, index) => ({
-        filled: dot === '●',
-        index: index
-      }));
-      const wordMatch = pattern.word.match(/#(\d+)\s+(.+)/);
-      const wordIndex = wordMatch ? wordMatch[1] : '0';
-      const wordText = wordMatch ? wordMatch[2] : 'unknown';
-      const binary = parseInt(wordIndex).toString(2).padStart(11, '0');
-      return {
-        position: pattern.position,
-        dotDisplay: dotDisplay,
-        word: wordText,
-        binary: binary
-      };
-    });
-    return {
-      metadata: {
-        timestamp: Date.now(),
-        wordCount: patterns.length,
-        description: `SLIP39 KeyTag Pattern (${patterns.length} words)`
-      },
-      patterns: processedPatterns,
-      printStyles: printStyles
-    };
-  }
   /**
    * Apply dot pattern to specific row from conversion result.
    * Updates row dots based on pattern data and refreshes word display
@@ -423,7 +313,7 @@ class Application {
   /**
    * Configure event listeners for user interface interactions.
    * Binds handlers for word count selection, mnemonic input,
-   * conversion triggers, reset functionality, and print export.
+   * and conversion triggers.
    */
   setupEventListeners() {
     const wordCountSelect = document.getElementById('wordCount');
@@ -442,10 +332,6 @@ class Application {
     const clearBtn = document.getElementById('clearBtn');
     clearBtn.addEventListener('click', () => {
       this.clearAll();
-    });
-    const exportPrintBtn = document.getElementById('exportPrint');
-    exportPrintBtn?.addEventListener('click', () => {
-      this.exportToPrint();
     });
   }
 
@@ -468,53 +354,30 @@ class Application {
   }
 
   /**
-   * Display template-based error with severity and formatting.
-   * Uses error template for consistent error presentation with proper
-   * categorization, styling, and user-friendly error recovery options.
+   * Display error with basic formatting for educational feedback.
+   * Provides simple error presentation for educational use cases.
    *
    * @param {string} message - Primary error message for user display
    * @param {Object} options - Error display options and configuration
    * @param {string} options.severity - Error severity level (low, medium, high, critical)
    * @param {string} options.title - Error title for header display
-   * @param {boolean} options.canRetry - Whether error supports retry functionality
    */
   async showError(message, options = {}) {
     const errorContainer = this.getOrCreateErrorContainer();
     const {
-      severity = 'medium',
-      title = 'Error',
-      canRetry = true
+      title = 'Error'
     } = options;
-    try {
-      if (this.templateService) {
-        const errorData = {
-          severity: severity,
-          title: title,
-          message: message,
-          canRetry: canRetry,
-          showReset: false,
-          timestamp: Date.now(),
-          category: 'APPLICATION'
-        };
-        const renderResult = await this.templateService.renderTemplate('error.hbs', errorData);
-        if (renderResult.success) {
-          errorContainer.innerHTML = renderResult.html;
-        } else {
-          errorContainer.innerHTML = `<div class="error fallback-error">${message}</div>`;
-        }
-      } else {
-        errorContainer.innerHTML = `<div class="error fallback-error">${message}</div>`;
-      }
-    } catch (error) {
-      console.error('Error display failed:', error);
-      errorContainer.innerHTML = `<div class="error fallback-error">${message}</div>`;
-    }
+    
+    errorContainer.innerHTML = `
+      <h3>${title}</h3>
+      <p>${message}</p>
+    `;
     errorContainer.classList.remove('hidden');
   }
 
   /**
-   * Display validation errors using template system with detailed formatting.
-   * Creates template-based validation error display with position information,
+   * Display validation errors with detailed formatting.
+   * Creates validation error display with position information,
    * word context, and specific error details for user guidance.
    *
    * @param {Object[]} errors - Array of validation error objects
@@ -523,31 +386,18 @@ class Application {
    * @param {string} errors[].error - Detailed error message
    */
   async showValidationErrors(errors) {
-    const errorContainer = this.getOrCreateErrorContainer();
     const validationMessage = `Found ${errors.length} validation ${errors.length === 1 ? 'error' : 'errors'} in mnemonic input`;
-    const errorDetails = {
-      validationErrors: errors.map(err => `Position ${err.position}: ${err.error} (word: "${err.word}")`).join('; '),
-      errorCount: errors.length
-    };
-    const suggestions = [
-      'Check spelling of each word against SLIP39 wordlist',
-      'Verify word order and spacing in input',
-      'Ensure all words are from the official SLIP39 specification',
-      'Remove any extra spaces or invalid characters'
-    ];
-    await this.showError(validationMessage, {
-      severity: 'high',
-      title: 'Validation Failed',
-      details: errorDetails,
-      suggestions: suggestions,
-      canRetry: true
+    const errorDetails = errors.map(err => `Position ${err.position}: ${err.error} (word: "${err.word}")`).join('<br>');
+    
+    await this.showError(`${validationMessage}<br><br>${errorDetails}`, {
+      title: 'Validation Failed'
     });
   }
 
   /**
    * Update network warning visibility based on connection status.
    * Shows security warning when online connection is detected
-   * for mnemonic safety during conversion operations.
+   * for educational safety during conversion operations.
    */
   updateNetworkWarning() {
     const warning = document.getElementById('network-warning');
@@ -573,13 +423,6 @@ class Application {
     });
   }
 
-  /**
-   * Reset form to initial state and clear all patterns.
-   * Public method for template error buttons to trigger application reset.
-   */
-  resetForm() {
-    this.clearAll();
-  }
   /**
    * Update word display for specific row based on current dot pattern.
    * Converts dot states to binary, validates against SLIP39 constraints,
