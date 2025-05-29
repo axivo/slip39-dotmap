@@ -5,7 +5,6 @@
  * structured error reporting with contextual information for debugging.
  *
  * @class Validator
- * @module Validator
  * @author AXIVO
  * @license MIT
  */

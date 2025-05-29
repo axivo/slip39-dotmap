@@ -5,7 +5,6 @@
  * reverse lookup table for efficient word-to-index mapping during conversion operations.
  *
  * @class Converter
- * @module Converter
  * @author AXIVO
  * @license MIT
  */

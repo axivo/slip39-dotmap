@@ -3,7 +3,6 @@
  * Provides template caching, custom helper registration, and error handling
  * with graceful fallback capabilities for browser environments.
  *
- * @module Template
  * @class Template
  * @author AXIVO
  * @license MIT

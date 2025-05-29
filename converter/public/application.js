@@ -1,20 +1,12 @@
 /**
- * @module Application
- * @description Frontend application controller for SLIP39 KeyTag Converter interface.
- * Manages user interactions, dot pattern visualization, mnemonic conversion,
- * validation feedback, and print layout generation with real-time updates.
- * @author AXIVO
- * @license MIT
- * @since 1.0.0
- */
-
-/**
  * Main application controller for SLIP39 KeyTag Converter frontend interface.
  * Handles user interactions, manages dot grid visualization, processes mnemonic
  * conversions, provides validation feedback, and generates print layouts.
  * Integrates with conversion library classes and manages application state.
  *
  * @class Application
+ * @author AXIVO
+ * @license MIT
  */
 class Application {
   /**
@@ -484,8 +476,6 @@ class Application {
    * @param {Object} options - Error display options and configuration
    * @param {string} options.severity - Error severity level (low, medium, high, critical)
    * @param {string} options.title - Error title for header display
-   * @param {Object} options.details - Additional error context and debugging info
-   * @param {string[]} options.suggestions - Array of suggested user actions
    * @param {boolean} options.canRetry - Whether error supports retry functionality
    */
   async showError(message, options = {}) {
@@ -493,8 +483,6 @@ class Application {
     const {
       severity = 'medium',
       title = 'Error',
-      details = null,
-      suggestions = [],
       canRetry = true
     } = options;
     try {
