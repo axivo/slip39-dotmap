@@ -24,42 +24,39 @@ The converter offers hands-on learning while maintaining strict security practic
 
 ## Quick Start
 
-### Prerequisites
+### Dependencies
 
 This application requires `Node.js` and `npm`, install them with Homebrew or other similar tools:
 
 ```bash
 brew install node
-node --version
-npm --version
 ```
 
 ### Installation
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
    git clone https://github.com/axivo/slip39-dotmap.git .
    ```
 
-2. **Navigate to converter directory:**
+2. Navigate to `converter` directory:
    ```bash
    cd slip39-dotmap/converter
    ```
 
-3. **Install dependencies:**
+3. Install dependencies:
    ```bash
    npm install
    ```
 
 ### Running the Application
 
-1. **Start the server:**
+1. Start the server:
    ```bash
    npm start
    ```
 
-2. **Open browser:**
-   Navigate to `http://localhost:3000`
+2. A browser window will open to `http://localhost:3000` URL.
 
 ## Disclaimer
 
