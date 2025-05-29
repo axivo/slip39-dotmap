@@ -6,7 +6,6 @@
  * for different use cases.
  *
  * @class DotPattern
- * @module DotPattern
  * @author AXIVO
  * @license MIT
  */
