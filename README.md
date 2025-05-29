@@ -7,7 +7,7 @@ A comprehensive solution that converts SLIP39 mnemonic words into physical dot p
 This project is designed for air-gapped, offline usage to prevent exposure of sensitive cryptographic material. SLIP39 mnemonics control cryptocurrency funds, **always use offline methods** when working with seed phrases.
 
 > [!WARNING]
-> There is a saying in the cryptocurrency world that the words **seed phrase** and **keyboard** should never appear in the same sentence.
+> There is a saying in the cryptocurrency world: "_the words **seed phrase** and **keyboard** should never appear in the same sentence_."
 >
 > - **Always use air-gapped devices**, never enter real patterns into electronic devices
 > - **Create multiple copies** stored in separate secure locations
